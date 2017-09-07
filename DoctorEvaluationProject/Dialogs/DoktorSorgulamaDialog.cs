@@ -26,7 +26,6 @@ namespace DoctorEvaluationProject.Dialogs
         {
             await context.PostAsync("Doktor Sorgulama Bölümündesiniz!");
             await context.PostAsync("Doktor ismini yazınız?");
-
             context.Wait(this.D_isim);
         }
 
@@ -66,8 +65,6 @@ namespace DoctorEvaluationProject.Dialogs
         private async Task D_Kaydet(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
             DoctorEvaluation db = new DoctorEvaluation();
-
-
 
             Hastaneler HS = new Hastaneler();
             Doktorlar DR = new Doktorlar();

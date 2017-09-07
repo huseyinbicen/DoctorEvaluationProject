@@ -53,10 +53,7 @@ namespace DoctorEvaluationProject.Dialogs
             }
         }
 
-
-
-
-
+     
         private async Task OnOptionSelected(IDialogContext context, IAwaitable<string> result)
         {
             try
@@ -76,7 +73,7 @@ namespace DoctorEvaluationProject.Dialogs
             }
             catch (TooManyAttemptsException ex)
             {
-                await context.PostAsync($"Ooops! Too many attemps :(. But don't worry, I'm handling that exception and you can try again!");
+                await context.PostAsync($"Hata! Çok Fazla Deneme Yapıldı. :(. Endişelenmeyin, Istisnyı ele alıyorum ve Lütfen Tekrar Deneyiniz" + ex.Message);
 
                 context.Wait(this.MessageReceivedAsync);
             }
@@ -95,7 +92,7 @@ namespace DoctorEvaluationProject.Dialogs
         {
             var ticketNumber = await result;
 
-            await context.PostAsync($"Thanks for contacting our support team. Your ticket number is {ticketNumber}.");
+            await context.PostAsync($"Destek ekibimizle iletişime geçtiğiniz için teşekkür ederiz. Hata numaranız {ticketNumber}.");
             context.Wait(this.MessageReceivedAsync);
         }
 
@@ -108,7 +105,7 @@ namespace DoctorEvaluationProject.Dialogs
             }
             catch (Exception ex)
             {
-                await context.PostAsync($"Failed with message: {ex.Message}");
+                await context.PostAsync($"Mesajınız başarısız oldu: {ex.Message}");
             }
             finally
             {
